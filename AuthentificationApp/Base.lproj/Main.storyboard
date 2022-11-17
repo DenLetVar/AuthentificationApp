@@ -25,12 +25,18 @@
                                         <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="BYZ-38-t0r" id="L6g-q4-mfy"/>
+                                        </connections>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hVW-er-c1d">
                                         <rect key="frame" x="0.0" y="77" width="200" height="34"/>
                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" secureTextEntry="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" enablesReturnKeyAutomatically="YES" secureTextEntry="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="BYZ-38-t0r" id="1Bg-IC-HLK"/>
+                                        </connections>
                                     </textField>
                                 </subviews>
                                 <constraints>
@@ -46,13 +52,19 @@
                                         <buttonConfiguration key="configuration" style="plain" title="Forgot User Name?">
                                             <fontDescription key="titleFontDescription" type="system" pointSize="14"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="forgotRegisteredData:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SnT-qp-Gi0"/>
+                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2s0-Dh-uv6">
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2s0-Dh-uv6">
                                         <rect key="frame" x="169.33333333333331" y="0.0" width="149.33333333333331" height="31"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Forgot Password?">
                                             <fontDescription key="titleFontDescription" type="system" pointSize="14"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="forgotRegisteredData:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kU2-Wr-b6N"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -61,7 +73,8 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Log In"/>
                                 <connections>
-                                    <segue destination="IQH-Hx-Ye6" kind="presentation" id="YFj-MV-3TS"/>
+                                    <action selector="logInPressed" destination="BYZ-38-t0r" eventType="touchUpInside" id="Mtc-Yh-U6x"/>
+                                    <segue destination="IQH-Hx-Ye6" kind="presentation" identifier="showWelcomeVC" modalPresentationStyle="fullScreen" id="YFj-MV-3TS"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -78,7 +91,7 @@
                     </view>
                     <connections>
                         <outlet property="passwordTF" destination="hVW-er-c1d" id="zdK-z4-AB2"/>
-                        <outlet property="userNameTF" destination="hVW-er-c1d" id="ovt-zD-UsO"/>
+                        <outlet property="userNameTF" destination="SIE-jg-ext" id="t8u-50-Qet"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -88,9 +101,9 @@
         <!--Welcome View Controller-->
         <scene sceneID="U4d-bT-HBb">
             <objects>
-                <viewController id="IQH-Hx-Ye6" customClass="WelcomeViewController" customModule="AuthentificationApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController wantsFullScreenLayout="YES" id="IQH-Hx-Ye6" customClass="WelcomeViewController" customModule="AuthentificationApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2nq-yt-F8T">
-                        <rect key="frame" x="0.0" y="0.0" width="430" height="863"/>
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="In6-Sn-EIg">
@@ -100,15 +113,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JrM-HA-L4M">
-                                <rect key="frame" x="151" y="675" width="128" height="50"/>
+                                <rect key="frame" x="151" y="710" width="128" height="50"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Log Out">
                                     <fontDescription key="titleFontDescription" type="system" pointSize="30"/>
                                     <color key="baseForegroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="logOutAction" destination="IQH-Hx-Ye6" eventType="touchUpInside" id="k3R-D8-pGT"/>
-                                    <segue destination="a3O-Nu-42J" kind="unwind" unwindAction="unwindFor:" id="v1H-53-P1v"/>
+                                    <segue destination="a3O-Nu-42J" kind="unwind" unwindAction="unwindSegueFor:" id="bSH-h2-Jdk"/>
                                 </connections>
                             </button>
                         </subviews>
